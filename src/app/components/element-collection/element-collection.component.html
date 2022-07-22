@@ -1,52 +1,15 @@
-<h5>Таблица с trackBy</h5>
-<table>
-  <thead>
-    <tr>
-      <th>колонка 1</th>
-      <th>колонка 2</th>
-      <th>колонка 3</th>
-      <th>колонка 4</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let element of elements$ | async; trackBy: trackByFn">
-      <td>{{element.a}}</td>
-      <td>{{element.b}}</td>
-      <td>{{element.c}}</td>
-      <td>{{getTime()}}</td>
-    </tr>
-    <tr *ngFor="let element of getElements(); trackBy: trackByFn">
-      <td>{{element.a}}</td>
-      <td>{{element.b}}</td>
-      <td>{{element.c}}</td>
-      <td>{{getTime()}}</td>
-    </tr>
-  </tbody>
-</table>
+TrackBy
+<ul>
+  <li *ngFor="let element of elements; trackBy: trackByFn">
+    {{element}}
+  </li>
+</ul>
 
-<h5>Таблица без trackBy</h5>
-<table>
-  <thead>
-    <tr>
-      <th>колонка 1</th>
-      <th>колонка 2</th>
-      <th>колонка 3</th>
-      <th>колонка 4</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let element of elements$ | async">
-      <td>{{element.a}}</td>
-      <td>{{element.b}}</td>
-      <td>{{element.c}}</td>
-      <td>{{getTime()}}</td>
-    </tr>
-    <tr *ngFor="let element of getElements()">
-      <td>{{element.a}}</td>
-      <td>{{element.b}}</td>
-      <td>{{element.c}}</td>
-      <td>{{getTime()}}</td>
-    </tr>
-  </tbody>
-</table>
-
+No trackBy
+<ul>
+  <li *ngFor="let element of elements">
+    {{element}}
+  </li>
+</ul>
 
 <button (click)="onCLick()">Кнопка</button>

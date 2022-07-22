@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, Subject, takeUntil, timer} from "rxjs";
 
 @Component({
@@ -7,77 +7,42 @@ import {BehaviorSubject, Subject, takeUntil, timer} from "rxjs";
   styleUrls: ['./element-collection.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ElementCollectionComponent implements OnInit, OnDestroy {
+export class ElementCollectionComponent implements OnInit {
 
-  private _elements: BehaviorSubject<any[]> = new BehaviorSubject(<any[]>[]);
-  elements$ = this._elements.asObservable();
+  elements = [
+    new Date().getTime(),
+    new Date().getTime(),
+    new Date().getTime(),
+    new Date().getTime(),
+    new Date().getTime(),
+    new Date().getTime(),
+  ];
 
-  private unsubscribe$: Subject<void> = new Subject();
-
-  constructor() {
+  constructor(
+    private cdr: ChangeDetectorRef,
+  ) {
   }
 
   ngOnInit(): void {
-    timer(3000)
-      .pipe(
-        takeUntil(this.unsubscribe$),
-      )
-      .subscribe(_ => {
-        this._elements.next([
-          {
-            a: 'a1',
-            b: 'b1',
-            c: 'c1',
-          },
-          {
-            a: 'a2',
-            b: 'b2',
-            c: 'c2',
-          },
-          {
-            a: 'a3',
-            b: 'b3',
-            c: 'c3',
-          },
-        ]);
-      })
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
   }
 
   trackByFn(index: any, item: any) {
+    console.log(index);
+    console.log(item);
     console.log('trackByFn was called');
-    return index;
+    return 1;
   }
 
-  getElements() {
-    return Object.values({
-      a: {
-        a: 'a1',
-        b: 'b1',
-        c: 'c1',
-      },
-      b: {
-        a: 'a2',
-        b: 'b2',
-        c: 'c2',
-      },
-      c: {
-        a: 'a3',
-        b: 'b3',
-        c: 'c3',
-      },
-    })
-  }
 
   onCLick() {
-    console.log('button click');
-  }
+    this.elements = [
+      new Date().getTime(),
+      new Date().getTime(),
+      new Date().getTime(),
+      new Date().getTime(),
+      new Date().getTime(),
+      new Date().getTime(),
+    ];
 
-  getTime() {
-    return new Date().getTime();
   }
 }
