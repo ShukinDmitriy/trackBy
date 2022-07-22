@@ -76,4 +76,8 @@ export class ElementCollectionComponent implements OnInit, OnDestroy {
   onCLick() {
     console.log('button click');
   }
+
+  getTime() {
+    return new Date().getTime();
+  }
 }

@@ -1,20 +1,49 @@
+<h5>Таблица с trackBy</h5>
 <table>
   <thead>
     <tr>
       <th>колонка 1</th>
       <th>колонка 2</th>
       <th>колонка 3</th>
+      <th>колонка 4</th>
   </thead>
   <tbody>
     <tr *ngFor="let element of elements$ | async; trackBy: trackByFn">
       <td>{{element.a}}</td>
       <td>{{element.b}}</td>
       <td>{{element.c}}</td>
+      <td>{{getTime()}}</td>
     </tr>
     <tr *ngFor="let element of getElements(); trackBy: trackByFn">
       <td>{{element.a}}</td>
       <td>{{element.b}}</td>
       <td>{{element.c}}</td>
+      <td>{{getTime()}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5>Таблица без trackBy</h5>
+<table>
+  <thead>
+    <tr>
+      <th>колонка 1</th>
+      <th>колонка 2</th>
+      <th>колонка 3</th>
+      <th>колонка 4</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let element of elements$ | async">
+      <td>{{element.a}}</td>
+      <td>{{element.b}}</td>
+      <td>{{element.c}}</td>
+      <td>{{getTime()}}</td>
+    </tr>
+    <tr *ngFor="let element of getElements()">
+      <td>{{element.a}}</td>
+      <td>{{element.b}}</td>
+      <td>{{element.c}}</td>
+      <td>{{getTime()}}</td>
     </tr>
   </tbody>
 </table>
