@@ -30,11 +30,11 @@ export class ElementCollectionComponent implements OnInit {
     console.log(index);
     console.log(item);
     console.log('trackByFn was called');
-    return 1;
+    return index;
   }
 
 
-  onCLick() {
+  onCLickOne() {
     this.elements = [
       new Date().getTime(),
       new Date().getTime(),
@@ -44,5 +44,9 @@ export class ElementCollectionComponent implements OnInit {
       new Date().getTime(),
     ];
 
+  }
+
+  onClickTwo() {
+    console.log('click btn');
   }
 }
