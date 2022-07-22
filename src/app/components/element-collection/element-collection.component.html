@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th>колонка 1</th>
+      <th>колонка 2</th>
+      <th>колонка 3</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let element of elements$ | async; trackBy: trackByFn">
+      <td>{{element.a}}</td>
+      <td>{{element.b}}</td>
+      <td>{{element.c}}</td>
+    </tr>
+    <tr *ngFor="let element of getElements(); trackBy: trackByFn">
+      <td>{{element.a}}</td>
+      <td>{{element.b}}</td>
+      <td>{{element.c}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<button (click)="onCLick()">Кнопка</button>
